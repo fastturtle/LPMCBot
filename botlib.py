@@ -148,13 +148,14 @@ def parsemsg(info, msg, sender):
                 try:
                     temp_f = weather['data']['current_condition'][0]['temp_F']
                     temp_c = weather['data']['current_condition'][0]['temp_C']
-                    ret += 'The current temperature in ' + cmd[1] + ' is ' + \
+                    loc = weather['data']['request'][0]['query']
+                    ret += 'The current temperature in ' + loc + ' is ' + \
                         temp_f + 'F/' + \
                         temp_c + 'C.\n'
                 except KeyError:
-                    ret += 'Could not find weather information. Make sure you entered a valid zip code, city, state or country.\n'
+                    ret += 'Could not find weather information. Make sure you entered a valid zip code or city.\n'
             else:
-                ret += 'Command help: Please specify a zip code, city, state or country.\n'
+                ret += 'Command help: Please specify a zip code or city.\n'
 
 # The !seen commmand returns the last time a user posted
         if cmd[0] == '!seen':
